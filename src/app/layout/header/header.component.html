@@ -1,0 +1,41 @@
+<p id="demo">{{ hello | uppercase}}</p><br /> // uppercase is a pipe and it takes the current string as a parameter by default
+<p>{{creationDate | date}}</p> // date is a pipe and it takes the current date as a parameter by default
+<p>{{amount | currency:'TL'}}</p>
+<p>{{currentAmount | exponentialStrength:2}}</p>
+<span>{{ hello }}</span><br />
+<input type="text" [(ngModel)]="hello" /><br />
+<select [(ngModel)]="selectedOption">
+    <option value="1">Seçenek 1</option>
+    <option value="2">Seçenek 2</option>
+</select>
+<textarea [ngModel]="hello"></textarea>
+<button (click)="handleButtonClick()">Change Hello Text</button>
+<div [id]="'division_' + uniqueId">
+    Test
+</div>
+<div *ngIf="hello.length === 5">
+    Şu anda hello değişkeni 5 karakterlidir.
+</div>
+
+<ng-container *ngIf="hello.length !== 5"> // ng-container is used to wrap multiple elements
+    <div>Birinci Div</div>
+    <div>İkinci Div</div>
+></ng-container>
+
+<div #divElement>
+    <p>
+        Bu elementi yakalayacağız.
+    </p>
+</div>
+
+<ol>
+    <li *ngFor="let todoItem of todoList | slice:1:3; let i = index">{{ i === 0 ? todoItem : 'Index 0\'dan büyük' }}</li> // slice is a pipe and it takes the start and end indexes as parameters by default.
+</ol>
+<app-footer [footerText]="hello" (onFooterTextChange)="handleHelloTextChange($event)"> // onFooterTextChange is an event
+    <p class="paragraph">
+        Paragrah is here
+    </p>
+</app-footer>
+
+<app-button [buttonText]="'Kayıt Ol'" (onButtonClick)="handleSignUpButtonClick()"></app-button>
+<app-button [buttonText]="'Giriş Yap'" (onButtonClick)="handleLoginButtonClick()" [buttonType]="'secondary'"></app-button>
